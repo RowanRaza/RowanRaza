@@ -1,7 +1,19 @@
 import React from "react";
 
-export interface SectionProps {
+export type SectionProps = {
     title: string,
     desc: string,
-    onPress: () => void
+    onPress?: () => void
 }
+
+export type IconSectionProps = SectionProps & {
+    icon: any
+}
+
+export type RootStackParamList = {
+    Accueil: undefined;
+    Biographie: undefined;
+    'Passe-temps': undefined;
+    Contacts: undefined;
+    'Coming soon': undefined
+};

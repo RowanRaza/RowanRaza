@@ -1,54 +1,45 @@
 import React from "react";
-import { Dimensions, View, StyleSheet, SafeAreaView, ScrollView, Text } from "react-native";
-import { Section } from "./components/Section";
-import { Profile } from "./components/Profile";
+import { Dimensions, StatusBar} from "react-native";import { HomeScreen } from "./screens/HomeScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { BioScreen } from "./screens/BioScreen";
+import { HobbyScreen } from "./screens/HobbyScreen";
+import { ContactScreen } from "./screens/ContactScreen";
+import { ComingSoon } from "./screens/ComingSoon";
+;
+const {fontScale} = Dimensions.get('screen')
 
-const {fontScale} = Dimensions.get('screen');
 export default function App() : React.JSX.Element {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <Profile/>
-        <View style={styles.welcomeContainer}>
-          <Text style={styles.welcomeText}>Bienvenu sur "RowanRaza" !</Text>
-        </View>
-        <Section 
-          onPress={() => console.log('bonjour')}
-          title="Biographie"
-          desc="Jeune développeur malagasy, né le 06 fevrier 2006..."
-        />
-        <Section 
-          onPress={() => console.log('bonjour')}
-          title="Réalisations"
-          desc="Regroupe certaines de mes réalisation personnelles et professionnelles"
-        />
-        <Section 
-          onPress={() => console.log('bonjour')}
-          title="Passe-temps"
-          desc="Mes loisirs, mes passions, mes passe-temps, découvrez-les dans cette section"
-        />
-        <Section 
-          onPress={() => console.log('bonjour')}
-          title="Comptes et contact"
-          desc="Jouez à des jeux en ligne avec moi, contacter moi sur un réseau professionnel,... cliquez ici !"
-        />
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <StatusBar backgroundColor={"#8b6a57"}/>
+      <RootStack/>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 0
-  },
-  welcomeContainer : {
-    height : 75,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  welcomeText: {
-    fontSize: 18 * fontScale,
-    fontWeight: 'bold'
-  }
-});
+const Stack = createNativeStackNavigator();
+function RootStack() {
+  return (
+    <Stack.Navigator initialRouteName="Accueil" 
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#8b6a57',
+        },
+        headerTitleStyle: {
+          fontSize: 18 * fontScale,
+          color: "#fff"
+        },
+        contentStyle: {
+          backgroundColor: '#fff'
+        },
+      }}
+    >
+      <Stack.Screen name="Accueil" component={HomeScreen} options={{headerShown: false}}/>
+      <Stack.Screen name="Biographie" component={BioScreen}/>
+      <Stack.Screen name="Passe-temps" component={HobbyScreen}/>
+      <Stack.Screen name="Contacts" component={ContactScreen}/>
+      <Stack.Screen name="Coming soon" component={ComingSoon}/>
+    </Stack.Navigator>
+  )
+}
