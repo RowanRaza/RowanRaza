@@ -4,7 +4,7 @@ Hello there! 👋
 
 I'm a passionate developer with a strong interest in modern JavaScript technologies. I specialize in building dynamic applications, and I'm always eager to explore new tools and frameworks.
 
-But enough about me! What better way to introduce myself than through a **React Native application**? Check it out here: [RowanRaza](https://github.com/RowanRaza)
+But enough about me! What better way to introduce myself than through a **React Native application**? Check it out here: [RowanRaza](https://github.com/RowanRaza/RowanRaza/)
 
 ## About This App
 
